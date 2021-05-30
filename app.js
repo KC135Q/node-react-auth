@@ -3,6 +3,8 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + './config/database.json')[env];
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");

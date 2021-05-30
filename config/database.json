@@ -1,0 +1,27 @@
+{
+  "development": {
+    "database": {
+      "url": "mongodb://localhost/node-react-auth",
+      "options": {
+        "useNewUrlParser": true
+      }
+    }
+  },
+  "test": {
+    "database": {
+      "url": "mongodb://localhost/node-react-auth_test",
+      "options": {
+        "useNewUrlParser": true
+      }
+    }
+  },
+  "production": {
+    "database": {
+      "url": "mongodb://localhost/node-react-auth_production",
+      "options": {
+        "useNewUrlParser": true,
+        "dbName": "database_production",
+      }
+    }
+  }
+}
