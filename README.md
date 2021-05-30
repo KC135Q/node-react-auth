@@ -24,3 +24,9 @@
 - `npm i -D mongoosejs-cli` [Mongoose npm cli](https://www.npmjs.com/package/mongoosejs-cli?activeTab=readme#installation)
 - `touch .mongooserc` and setup the file to use a db root directory as shown on the cli website
 - `npx mongoosejs-cli init` to add mongo db setup to application
+  - Notice you now have a db folder with models in it
+- `npx mongoosejs-cli model:create --name User --attributes name:String,email:String,password:String`
+- `npx mongoosejs-cli seed:create --name AddUser` - to populate users
+- Add bcrypt npm `npm i bcrypt`
+- Add initial user with Seeds `npm run seed`
+-
