@@ -12,4 +12,15 @@
 - Create and connect to a github repo
 - `git init`
   - Prefer main over master as your [primary branch?](https://www.seancdavis.com/blog/git-set-default-branch/)
-- 
+
+# Connecting front end and backend
+
+- [Create React App with an Express backend](https://daveceddia.com/create-react-app-express-backend/)
+- [Deploying a React app with React-Router and an Express Backend](https://dev.to/nburgess/creating-a-react-app-with-react-router-and-an-express-backend-33l3)
+
+# Adding the database
+
+- `npm i mongoose` [Mongoose npm](https://www.npmjs.com/package/mongoose)
+- `npm i -D mongoosejs-cli` [Mongoose npm cli](https://www.npmjs.com/package/mongoosejs-cli?activeTab=readme#installation)
+- `touch .mongooserc` and setup the file to use a db root directory as shown on the cli website
+- `npx mongoosejs-cli init` to add mongo db setup to application
