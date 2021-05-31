@@ -3,11 +3,10 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + './config/database.json')[env];
+const env = process.env.NODE_ENV || "development";
+const config = require(__dirname + "/config/database.json")[env];
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var routes = require("./routes");
 
 var app = express();
 
@@ -23,11 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "client/build")));
 
 // An api endpoint that returns a short list of items
-app.get("/api/getList", (req, res) => {
-  var list = ["item1", "item2", "item3"];
-  res.json(list);
-  console.log("Sent list of items");
-});
+app.use(routes);
 
 // Handles any requests that don't match the ones above
 app.get("*", (req, res) => {

@@ -3,7 +3,9 @@
     "database": {
       "url": "mongodb://localhost/node-react-auth",
       "options": {
-        "useNewUrlParser": true
+        "useNewUrlParser": true,
+        "useUnifiedTopology": true,
+        "serverSelectionTimeoutMS": 5000
       }
     }
   },
@@ -11,7 +13,9 @@
     "database": {
       "url": "mongodb://localhost/node-react-auth_test",
       "options": {
-        "useNewUrlParser": true
+        "useNewUrlParser": true,
+        "useUnifiedTopology": true,
+        "serverSelectionTimeoutMS": 5000
       }
     }
   },
@@ -20,7 +24,8 @@
       "url": "mongodb://localhost/node-react-auth_production",
       "options": {
         "useNewUrlParser": true,
-        "dbName": "database_production",
+        "useUnifiedTopology": true,
+        "serverSelectionTimeoutMS": 5000
       }
     }
   }
