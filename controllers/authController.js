@@ -3,18 +3,43 @@ const bcrypt = require("bcryptjs");
 const jwtDecode = require("jwt-decode");
 const { models } = require("../db/models");
 
+const verifyPassword = (passwordAttempt, hashedPassword) => {
+  return bcrypt.compare(passwordAttempt, hashedPassword);
+};
+
 const authPerson = async (req, res) => {
   try {
-    // console.log(req.body);
     const { email, password } = req.body;
-    // console.log("db", db);
     const person = await models.User.find({ email }).exec();
-    console.log(person);
 
-    return res.status(200).json(person);
+    if (!person) {
+      return res.status(403).json({ message: "Wrong email or password." });
+    }
+    // console.log(person);
+
+    const passwordValid = await verifyPassword(password, person.password);
+
+    if (passwordValid) {
+      const { password, name, ...rest } = person;
+      const userInfo = Object.assign({}, { ...rest });
+      const token = createToken(person);
+
+      const decodedToken = jwtDecode(token);
+      const expiresAt = decodedToken.exp;
+
+      return {
+        token,
+        expiresAt,
+        userInfo,
+        message: "Successful authentication!",
+      };
+    } else {
+      return res.status(403).json({
+        message: "Wrong email or password.",
+      });
+    }
   } catch (error) {
-    console.warn(error);
-    return res.json(error);
+    return res.status(400).json(error);
   }
 };
 
